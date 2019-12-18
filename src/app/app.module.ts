@@ -11,6 +11,8 @@ import { CarsComponent } from './cars/cars.component';
 import { MaterialModule } from './material.module';
 import { UIService } from './shared/ui.service';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './interceptors/HttpErrorInterceptor';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,14 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     BrowserAnimationsModule,
     LayoutModule,
     MaterialModule,
-    HttpClientModule  
+    HttpClientModule
   ],
-  providers: [UIService],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true,
+  }, UIService],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
