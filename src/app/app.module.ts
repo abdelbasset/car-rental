@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CarsComponent } from './cars/cars.component';
 import { MaterialModule } from './material.module';
 import { UIService } from './shared/ui.service';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UIService } from './shared/ui.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule    
+    MaterialModule,
+    HttpClientModule  
   ],
   providers: [UIService],
   bootstrap: [AppComponent]
