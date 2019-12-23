@@ -4,10 +4,10 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list *ngIf="isAuth">
       <a mat-list-item href="#" routerLink="/cars">Voitures</a>
-      <a mat-list-item href="#"> Clients </a>
-      <a mat-list-item href="#"> Contrats</a>
+      <a mat-list-item href="#" routerLink="/cars"> Clients </a>
+      <a mat-list-item href="#" routerLink="/cars"> Contrats</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,7 +21,11 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Location de Voiture</span>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      <div class="text-right w-100 top-btn">
+        <a class="nav-item nav-link" (click)="logout()" *ngIf="isAuth" >Logout</a>
+        <a class="nav-item nav-link" routerLink="/login" *ngIf="!isAuth" >Login</a>
+      </div>
+      
     </mat-toolbar>
     <div class="container-fluid my-3">
       <router-outlet></router-outlet>
