@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from '../_models/car';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
+import { NgForm } from '../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-cars',
@@ -16,6 +17,7 @@ export class CarsComponent implements OnInit {
   postdata: Car;
 
   constructor(private api: ApiService) { }
+
   ngOnInit() {
     this.getCars();
   }
@@ -56,6 +58,23 @@ export class CarsComponent implements OnInit {
    deleteCar(id: any) {
     this.api
       .deleteCar(id, this.postdata)
+      .subscribe(resp => {
+        return this.spresp.push(resp);
+      });
+  }
+
+  onSubmit(f: NgForm) {
+    
+    console.log(f.value);  
+    this.postdata = {
+      id_car: "546",
+      name_car: f.value.name_car,
+      registration: f.value.registration_car,
+      price: f.value.price_car,
+      picture: f.value.photo_car
+    };
+    this.api
+      .addCar(this.postdata)
       .subscribe(resp => {
         return this.spresp.push(resp);
       });
