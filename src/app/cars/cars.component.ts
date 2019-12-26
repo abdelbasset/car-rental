@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from './car.model';
+import { Car } from '../_models/car';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 

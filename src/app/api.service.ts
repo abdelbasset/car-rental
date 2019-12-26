@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Car } from './cars/car.model';
+import { Car } from './_models/car';
 import { retry, catchError, map, tap, filter } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
