@@ -11,6 +11,7 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatInputModule,
+  MatSnackBarModule,
   
 } from '@angular/material';
 
@@ -25,7 +26,8 @@ import {
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   exports: [MatToolbarModule,
     MatButtonModule,
@@ -37,7 +39,8 @@ import {
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

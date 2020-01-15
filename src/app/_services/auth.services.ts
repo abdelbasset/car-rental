@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
+import { UIService } from '../shared/ui.service';
 
 
 @Injectable({ providedIn: 'root' })
@@ -13,9 +14,12 @@ export class AuthService {
     private isAuthenticated = false;
     authChange = new Subject<boolean>();
 
-    constructor(private http: HttpClient, private router: Router) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-        this.currentUser = this.currentUserSubject.asObservable();
+    constructor(
+        private http: HttpClient, 
+        private router: Router,
+        private uiService: UIService) {
+            this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+            this.currentUser = this.currentUserSubject.asObservable();
     }
 
     public get currentUserValue(): User {
@@ -24,7 +28,7 @@ export class AuthService {
 
     initAuthListener(){
         this.currentUserSubject.subscribe(user =>  {
-            console.log(user);
+            
             if (user) {
                 this.isAuthenticated = true;
                 this.authChange.next(true);
@@ -34,6 +38,7 @@ export class AuthService {
                 this.router.navigate(['/login']);
                 this.isAuthenticated = false;
             }
+            
         });
     }
     
@@ -44,6 +49,7 @@ export class AuthService {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 //this.isAuthenticated = true;
+                this.uiService.loadingStateChanged.next(false);
                 return user;
             }));
     }

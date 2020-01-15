@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { map, first } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
+import { AuthService } from '../_services/auth.services';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   loading = false;
   users: User[];
-    
+  currentUser: User;
+  isAuth = false;
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -32,15 +34,22 @@ export class DashboardComponent {
       ];
     })
   );
+  
 
-  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService, private authService: AuthService) {
+    this.authService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   ngOnInit() {
+    if(this.currentUser){
+      this.isAuth = true;
+    }
     this.loading = true;
     this.userService.getAll().pipe(first()).subscribe(users => {
         this.loading = false;
         this.users = users;
     });
-}
+  }
+
 
 }

@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 const localUrl = 'assets/data/cars.json';
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/xml',
+    'Content-Type':  'application/json',
     'Authorization': 'jwt-token'
   })
 };
@@ -50,6 +50,7 @@ export class ApiService {
   }
 
   addCar(car: Car): Observable<Car> {
+    console.log(car);
     return this.http.post<Car>(localUrl, car, httpOptions)
       .pipe(
         catchError(this.handleError('addCar', car))
