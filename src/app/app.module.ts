@@ -20,6 +20,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backend';
+import { ClientsComponent } from './clients/clients.component';
+import { NewslettersComponent } from './newsletters/newsletters.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { fakeBackendProvider } from './_helpers/fake-backend';
     DashboardComponent,
     CarsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ClientsComponent,
+    NewslettersComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,10 @@ import { fakeBackendProvider } from './_helpers/fake-backend';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [ 
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
