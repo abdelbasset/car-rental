@@ -47,6 +47,7 @@ export class NavigationComponent implements OnInit, OnDestroy, DoCheck {
     }
     console.log(this.authService.isAuth());
   }
+  
   ngDoCheck() {
     if(this.authService.isAuth()){
       this.isAuth = true;

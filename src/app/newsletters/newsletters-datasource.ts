@@ -8,30 +8,27 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface NewslettersItem {
   name: string;
   id: number;
+  email: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: NewslettersItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {id: 1, name: 'Hydrogen', email: 'test'},
+  {id: 2, name: 'Helium', email: 'test'},
+  {id: 3, name: 'Lithium', email: 'test'},
+  {id: 4, name: 'Beryllium', email: 'test'},
+  {id: 5, name: 'Boron', email: 'test'},
+  {id: 6, name: 'Carbon', email: 'test'},
+  {id: 7, name: 'Nitrogen', email: 'test'},
+  {id: 8, name: 'Oxygen', email: 'test'},
+  {id: 9, name: 'Fluorine', email: 'test'},
+  {id: 10, name: 'Neon', email: 'test'},
+  {id: 11, name: 'Sodium', email: 'test'},
+  {id: 12, name: 'Magnesium', email: 'test'},
+  {id: 13, name: 'Aluminum', email: 'test'},
+  {id: 14, name: 'Silicon', email: 'test'},
+  {id: 15, name: 'Phosphorus', email: 'test'},
+
 ];
 
 /**

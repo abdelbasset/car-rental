@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
     this.userService.getAll().pipe(first()).subscribe(users => {
         this.loading = false;
         this.users = users;
+        this.isAuth = true;
     });
   }
 
