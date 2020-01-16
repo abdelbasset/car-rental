@@ -12,7 +12,7 @@ import { UIService } from '../shared/ui.service';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent implements OnInit, OnDestroy, DoCheck {
   currentUser: User;
   loading = true;
   users: User[];
@@ -42,6 +42,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    if(this.authService.isAuth()){
+      this.isAuth = true;
+    }
+    console.log(this.authService.isAuth());
+  }
+  
+  ngDoCheck() {
     if(this.authService.isAuth()){
       this.isAuth = true;
     }
