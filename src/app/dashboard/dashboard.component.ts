@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.services';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,6 +15,7 @@ export class DashboardComponent implements OnInit {
   users: User[];
   currentUser: User;
   isAuth = false;
+  authSubscription: Subscription;
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -41,9 +43,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.currentUser){
-      this.isAuth = true;
-    }
     this.loading = true;
     this.userService.getAll().pipe(first()).subscribe(users => {
         this.loading = false;

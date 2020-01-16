@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from '../../_services/auth.services';
+import { Subscription } from '../../../../node_modules/rxjs';
+import { UIService } from '../../shared/ui.service';
 
 
 @Component({
@@ -17,11 +19,13 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  isAuth = false;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthService
+    private authenticationService: AuthService,
+    private uiService: UIService
 
   ) {
     // redirect to home if already logged in

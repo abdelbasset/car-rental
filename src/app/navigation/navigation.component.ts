@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay, first } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { UIService } from '../shared/ui.service';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent implements OnInit, OnDestroy, DoCheck {
   currentUser: User;
   loading = true;
   users: User[];
@@ -42,9 +42,16 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authSubscription = this.authService.authChange.subscribe(authStatus => {
-      this.isAuth = authStatus;
-    });
+    if(this.authService.isAuth()){
+      this.isAuth = true;
+    }
+    console.log(this.authService.isAuth());
+  }
+  ngDoCheck() {
+    if(this.authService.isAuth()){
+      this.isAuth = true;
+    }
+    console.log(this.authService.isAuth());
   }
 
   ngOnDestroy() {

@@ -32,7 +32,7 @@ export class AuthService {
             if (user) {
                 this.isAuthenticated = true;
                 this.authChange.next(true);
-                this.router.navigate(['/cars']);
+                //this.router.navigate(['/']);
             } else {
                 this.authChange.next(false);
                 this.router.navigate(['/login']);
