@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../_models/car';
 import { Observable, Subscription } from 'rxjs';
-import { ApiService } from '../api.service';
-import { NgForm } from '../../../node_modules/@angular/forms';
+import { NgForm } from '@angular/forms';
 import { AuthService } from '../_services/auth.services';
+import { CarServices } from '../_services/cars.services';
 
 @Component({
   selector: 'app-cars',
@@ -19,7 +19,7 @@ export class CarsComponent implements OnInit {
   authSubscription: Subscription;
   isAuth = false;
 
-  constructor(private api: ApiService, private authService: AuthService) { }
+  constructor(private api: CarServices, private authService: AuthService) { }
 
   ngOnInit() {
     this.getCars();
@@ -32,6 +32,7 @@ export class CarsComponent implements OnInit {
         for (let car of data) {
           this.cars.push(car);
         }
+        console.log(this.cars);
       });
   }
 

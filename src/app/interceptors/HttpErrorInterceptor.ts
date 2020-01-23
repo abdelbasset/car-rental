@@ -8,7 +8,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request)
       .pipe(
-        /* tap(data => console.log(data)),
+        tap(data => console.log(data)),
         catchError((error: HttpErrorResponse) => {
           if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.
@@ -23,7 +23,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           // return an observable with a user-facing error message
           return throwError(
             'Something bad happened; please try again later.');
-        }) */
+        }) 
       );
   }
 }

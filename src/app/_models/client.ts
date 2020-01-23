@@ -1,7 +1,7 @@
 export interface Client{
-    id: string;
-    firstName: string;
-    lastName: string;
-    cin: string;
+    id: String,
+    firstName: String,
+    lastName: String,
+    email: String,
     
 }
