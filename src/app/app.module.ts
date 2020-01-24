@@ -24,6 +24,7 @@ import { NewslettersComponent } from './newsletters/newsletters.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { DetailCarComponent } from './cars/detail-car/detail-car.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MatSortModule } from '@angular/material/sort';
     LoginComponent,
     SignupComponent,
     ClientsComponent,
-    NewslettersComponent
+    NewslettersComponent,
+    DetailCarComponent
   ],
   imports: [
     BrowserModule,

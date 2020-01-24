@@ -1,0 +1,15 @@
+<div *ngIf="car">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ car.picture }}" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+            <h2>{{car.name_car | uppercase}}</h2>
+            <p>{{ car.desc_car }}</p>
+            <p>{{ car.price }}</p>
+        </div>
+    </div>
+    <p>{{ car.id_car }}</p>
+    <button mat-raised-button color="primary" (click)="goBack()">go back</button>
+</div>
+

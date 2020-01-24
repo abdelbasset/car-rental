@@ -59,14 +59,14 @@ export class CarServices {
     updateCar(id: any, car: Car): Observable<Car> {
         return this.http.put<Car>(localUrl + id, car, httpOptions)
             .pipe(
-                catchError(this.handleError('addCar', car))
+                catchError(this.handleError('updateCar', car))
             );
     }
 
     deleteCar(id: any, car: Car): Observable<Car> {
         return this.http.delete<Car>(localUrl + id, httpOptions)
             .pipe(
-                catchError(this.handleError('addCar', car))
+                catchError(this.handleError('deleteCar', car))
             );
     }
 
