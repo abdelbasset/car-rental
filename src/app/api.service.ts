@@ -31,7 +31,7 @@ export class ApiService {
     return this.http.get<Car[]>(localUrl).pipe(
       map(
         cars => cars.find(
-        (car: Car) => car.id_car === id)
+        (car: Car) => car.id === id)
       ));
      // retry(3), catchError(this.handleError<Car>('getCars')));
   }

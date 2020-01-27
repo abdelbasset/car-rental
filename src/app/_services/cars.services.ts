@@ -4,7 +4,7 @@ import { Car } from '../_models/car';
 import { catchError, retry, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
-const localUrl = 'assets/data/cars.json';
+const localUrl = 'http://localhost:3000';
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -22,17 +22,41 @@ export class CarServices {
 
     getCars(): Observable<any> {
         //httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
-        return this.http.get<Car[]>(localUrl, httpOptions).pipe(
+        return this.http.get<Car[]>(localUrl + '/cars', httpOptions).pipe(
             retry(3), catchError(this.handleError<Car[]>('getCars', [])));
     }
 
     getCarById(id: any): Observable<any> {
-        return this.http.get<Car[]>(localUrl).pipe(
+        return this.http.get<Car[]>(localUrl + '/cars').pipe(
             map(
                 cars => cars.find(
-                    (car: Car) => car.id_car === id)
+                    (car: Car) => car.id === id)
             ));
         // retry(3), catchError(this.handleError<Car>('getCars')));
+    }
+
+    addCar(car: Car): Observable<Car> {
+        console.log(car);
+        return this.http.post<Car>(localUrl + '/cars', JSON.stringify(car), httpOptions)
+            .pipe(
+                retry(1),
+                catchError(this.handleError('addCar', car))
+            );
+    }
+
+    updateCar(id: any, car: Car): Observable<Car> {
+        return this.http.put<Car>(localUrl + id, car, httpOptions)
+            .pipe(
+                catchError(this.handleError('updateCar', car))
+            );
+    }
+
+    deleteCar(id: any, car: Car): Observable<Car> {
+        return this.http.delete<Car>(localUrl + '/cars/' + id, httpOptions)
+            .pipe(
+                retry(1),
+                catchError(this.handleError('deleteCar', car))
+            );
     }
 
     private handleError<T>(operation = 'operation', result?: T) {
@@ -46,28 +70,6 @@ export class CarServices {
 
     private log(message: string) {
         console.log(message);
-    }
-
-    addCar(car: Car): Observable<Car> {
-        console.log(car);
-        return this.http.post<Car>(localUrl, car, httpOptions)
-            .pipe(
-                catchError(this.handleError('addCar', car))
-            );
-    }
-
-    updateCar(id: any, car: Car): Observable<Car> {
-        return this.http.put<Car>(localUrl + id, car, httpOptions)
-            .pipe(
-                catchError(this.handleError('updateCar', car))
-            );
-    }
-
-    deleteCar(id: any, car: Car): Observable<Car> {
-        return this.http.delete<Car>(localUrl + id, httpOptions)
-            .pipe(
-                catchError(this.handleError('deleteCar', car))
-            );
     }
 
 }

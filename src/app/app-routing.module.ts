@@ -7,6 +7,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { ClientsComponent } from './clients/clients.component';
 import { NewslettersComponent } from './newsletters/newsletters.component';
 import { DetailCarComponent } from './cars/detail-car/detail-car.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'cars', component: CarsComponent, canActivate: [AuthGuard] },
   { path: 'detail-car/:id_car', component: DetailCarComponent, canActivate: [AuthGuard] },
   { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] },
-  { path: 'newsletters', component: NewslettersComponent, canActivate: [AuthGuard] }
+  { path: 'newsletters', component: NewslettersComponent, canActivate: [AuthGuard] },
+  { path: 'contact', component: ContactsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

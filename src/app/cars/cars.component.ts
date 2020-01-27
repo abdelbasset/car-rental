@@ -15,7 +15,7 @@ export class CarsComponent implements OnInit {
 
   cars: Car[] = [];
   headers: string[];
-  postdata: Car;
+  postdata: any;
   authSubscription: Subscription;
   isAuth = false;
 
@@ -65,15 +65,14 @@ export class CarsComponent implements OnInit {
     this.api
       .deleteCar(id, this.postdata)
       .subscribe(resp => {
-        return this.cars.push(resp);
+        this.getCars();
       });
   }
 
   onSubmit(f: NgForm) {
 
-    console.log(f.value);
     this.postdata = {
-      id_car: "546",
+      id: this.cars.length + 1,
       name_car: f.value.name_car,
       desc_car: f.value.description_car,
       registration: f.value.registration_car,

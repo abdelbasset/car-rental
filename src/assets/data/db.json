@@ -1,0 +1,52 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "name_car": "Sanchez Reese",
+      "desc_car": "Sanchez Reese Desc",
+      "registration": "2019-06-10T01:43:53 -02:00",
+      "price": "15 $",
+      "picture": "https://vistapointe.net/images/car-5.jpg"
+    },
+    {
+      "id": 2,
+      "name_car": "Joy Hamilton",
+      "desc_car": "Joy Hamilton Description",
+      "registration": "2019-04-05T08:13:15 -02:00",
+      "price": "25 $",
+      "picture": "https://vistapointe.net/images/car-5.jpg"
+    },
+    {
+      "id": 3,
+      "name_car": "Deana Wolfe",
+      "desc_car": "Joy Hamilton Description",
+      "registration": "2015-10-31T07:16:46 -01:00",
+      "price": "85 $",
+      "picture": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Maruti/Swift/6318/1572069250647/front-left-side-47.jpg"
+    },
+    {
+      "id": 4,
+      "name_car": "Wagner Shepard",
+      "desc_car": "Joy Hamilton Description",
+      "registration": "2014-12-05T05:30:42 -01:00",
+      "price": "25 $",
+      "picture": "https://vistapointe.net/images/car-2.jpg"
+    },
+    {
+      "id_car": 5,
+      "name_car": "Silvia Gutierrez",
+      "desc_car": "Joy Hamilton Description",
+      "registration": "2019-03-24T08:57:00 -01:00",
+      "price": "13 $",
+      "picture": "https://vistapointe.net/images/car-7.jpg"
+    },
+    {
+      "id": 6,
+      "name_car": "Lolita Edwards",
+      "desc_car": "Joy Hamilton Description",
+      "registration": "2019-10-29T09:01:21 -01:00",
+      "price": "12 $",
+      "picture": "https://vistapointe.net/images/car-4.jpg"
+    }
+  ]
+}
