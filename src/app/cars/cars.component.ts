@@ -70,9 +70,10 @@ export class CarsComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-
+    let maxId;
+    this.api.getMaxId().subscribe(res => maxId = res);
     this.postdata = {
-      id: this.cars.length + 1,
+      id: maxId + 1,
       name_car: f.value.name_car,
       desc_car: f.value.description_car,
       registration: f.value.registration_car,

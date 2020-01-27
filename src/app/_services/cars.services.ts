@@ -27,10 +27,22 @@ export class CarServices {
     }
 
     getCarById(id: any): Observable<any> {
-        return this.http.get<Car[]>(localUrl + '/cars').pipe(
+        return this.http.get<Car>(localUrl + '/cars/' + id).pipe(
+            retry(1),
+            catchError(this.handleError)
+          )
+          /*.pipe(
             map(
                 cars => cars.find(
                     (car: Car) => car.id === id)
+            ));*/
+        // retry(3), catchError(this.handleError<Car>('getCars')));
+    }
+
+    getMaxId(): Observable<any> {
+        return this.http.get<Car[]>(localUrl + '/cars').pipe(
+            map(
+                cars => Math.max.apply(Math, cars.map( car => car.id ))
             ));
         // retry(3), catchError(this.handleError<Car>('getCars')));
     }

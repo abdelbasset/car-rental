@@ -18,7 +18,7 @@ export class DetailCarComponent implements OnInit {
   }
 
   getCar(): void {
-    const id = this.route.snapshot.paramMap.get('id_car');
+    const id = this.route.snapshot.paramMap.get('id');
     this.carService.getCarById(id)
       .subscribe(details => this.car = details);
   }
