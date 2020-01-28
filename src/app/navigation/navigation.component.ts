@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay, first } from 'rxjs/operators';
@@ -6,6 +6,7 @@ import { AuthService } from '../_services/auth.services';
 import { Router } from '@angular/router';
 import { User } from '../_models/user';
 import { UIService } from '../shared/ui.service';
+import { MatSidenav } from '../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-navigation',
@@ -13,6 +14,9 @@ import { UIService } from '../shared/ui.service';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit, OnDestroy, DoCheck {
+  //In component.ts
+  @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
+  
   currentUser: User;
   loading = true;
   users: User[];
@@ -42,14 +46,14 @@ export class NavigationComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   ngOnInit() {
-    if(this.authService.isAuth()){
+    if (this.authService.isAuth()) {
       this.isAuth = true;
     }
     console.log(this.authService.isAuth());
   }
-  
+
   ngDoCheck() {
-    if(this.authService.isAuth()){
+    if (this.authService.isAuth()) {
       this.isAuth = true;
     }
     console.log(this.authService.isAuth());
@@ -58,6 +62,11 @@ export class NavigationComponent implements OnInit, OnDestroy, DoCheck {
   ngOnDestroy() {
     this.isAuth = false;
     this.authSubscription.unsubscribe();
+  }
+
+  toggleSidenav() {
+    this.sidenav.toggle();
+    console.log(this.sidenav.toggle);
   }
 
 }

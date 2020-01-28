@@ -63,7 +63,7 @@ export class CarsComponent implements OnInit {
 
   deleteCar(id: any) {
     this.api
-      .deleteCar(id, this.postdata)
+      .deleteCar(id)
       .subscribe(resp => {
         this.getCars();
       });

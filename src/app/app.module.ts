@@ -21,11 +21,11 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backend';
 import { ClientsComponent } from './clients/clients.component';
 import { NewslettersComponent } from './newsletters/newsletters.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { DetailCarComponent } from './cars/detail-car/detail-car.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -49,9 +49,8 @@ import { ContactsComponent } from './contacts/contacts.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ 
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

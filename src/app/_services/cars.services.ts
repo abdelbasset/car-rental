@@ -63,11 +63,11 @@ export class CarServices {
             );
     }
 
-    deleteCar(id: any, car: Car): Observable<Car> {
+    deleteCar(id: any): Observable<any> {
         return this.http.delete<Car>(localUrl + '/cars/' + id, httpOptions)
             .pipe(
                 retry(1),
-                catchError(this.handleError('deleteCar', car))
+                catchError(this.handleError('deleteCar'))
             );
     }
 

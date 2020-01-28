@@ -12,6 +12,10 @@ import {
   MatSelectModule,
   MatInputModule,
   MatSnackBarModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  
   
 } from '@angular/material';
 
@@ -27,9 +31,14 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+    
   ],
-  exports: [MatToolbarModule,
+  exports: [
+    MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
@@ -40,7 +49,11 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+    
   ]
 })
 export class MaterialModule { }

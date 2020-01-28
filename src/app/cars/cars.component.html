@@ -5,25 +5,25 @@
 </div>
 <hr>
 <div class="row">
-    <div class="col-lg-3 col-md-6 mb-5" *ngFor="let car of cars">
-        <mat-card class="example-card" >
-            <mat-card-header>
-              
-              <mat-card-title>{{ car.name_car }}</mat-card-title>
-              <mat-card-subtitle>{{ car.price }}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="{{ car.picture }}" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>{{car.desc_car}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <!-- <button mat-button routerLink="/detail-car/{{car.id}}" > Détail </button> -->
-              <button mat-raised-button color="primary" (click)='getCarById( car.id )'>Détail</button>
-              <button mat-raised-button class="float-right" color="warn" (click)='deleteCar( car.id, car )'>Delete</button>
-            </mat-card-actions>
-          </mat-card>
-    </div>
+  <div class="col-lg-3 col-md-6 mb-5" *ngFor="let car of cars">
+    <mat-card class="example-card">
+      <mat-card-header>
+
+        <mat-card-title>{{ car.name_car }}</mat-card-title>
+        <mat-card-subtitle>{{ car.price }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{ car.picture }}" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>{{car.desc_car}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <!-- <button mat-button routerLink="/detail-car/{{car.id}}" > Détail </button> -->
+        <button mat-raised-button color="primary" (click)='getCarById( car.id )'>Détail</button>
+        <button mat-raised-button class="float-right" color="warn" (click)='deleteCar( car.id )'>Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
 
 
@@ -32,39 +32,39 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Car</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="example-container">
-                    <mat-form-field>
-                        <input matInput placeholder="Name" name="name_car" ngModel>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Price" name="price_car" ngModel>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="registration" name="registration_car" ngModel>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Photo" name="photo_car" ngModel>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <textarea matInput placeholder="Description" name="description_car" ngModel></textarea>
-                    </mat-form-field>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button  type="submit" mat-button color="primary" [disabled]= "f.invalid">Save</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Car</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        </form>
+        <div class="modal-body">
+
+          <div class="example-container">
+            <mat-form-field>
+              <input matInput placeholder="Name" name="name_car" ngModel>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Price" name="price_car" ngModel>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="registration" name="registration_car" ngModel>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Photo" name="photo_car" ngModel>
+            </mat-form-field>
+            <mat-form-field>
+              <textarea matInput placeholder="Description" name="description_car" ngModel></textarea>
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" mat-button color="primary" [disabled]="f.invalid">Save</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
