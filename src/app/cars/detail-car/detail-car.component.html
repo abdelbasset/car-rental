@@ -1,15 +1,27 @@
 <div *ngIf="car">
-    <div class="row">
-        <div class="col-md-4">
-            <img src="{{ car.picture }}" alt="" class="img-fluid">
-        </div>
-        <div class="col-md-8">
-            <h2>{{car.name_car | uppercase}}</h2>
-            <p>{{ car.desc_car }}</p>
-            <p>{{ car.price }}</p>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{ car.picture }}" alt="" class="img-fluid">
     </div>
-    <p>{{ car.id_car }}</p>
-    <button mat-raised-button color="primary" (click)="goBack()">go back</button>
-</div>
+    <div class="col-md-8">
+      <form class="example-form" [formGroup]="updateForm" (ngSubmit)="save()">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName='name_car'  placeholder="Name" value="{{car.name_car | uppercase}}">
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+          <textarea matInput formControlName='desc_car' placeholder="Description" value="{{car.desc_car }}"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName='price' placeholder="Price" value="{{ car.price | currency:'EUR'  }}">
+        </mat-form-field>
+        <input type="hidden" formControlName='picture' value="{{car.picture }}">
+        <button mat-raised-button color="primary" type="submit">Save</button>
+
+      </form>
+    </div>
+  </div>
+  <p>{{ car.id_car }}</p>
+  <button mat-raised-button color="primary" (click)="goBack()">go back</button>
+</div>

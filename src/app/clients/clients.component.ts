@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientsServices } from '../_services/clients.services';
 import { Client } from '../_models/client';
-import { MatPaginator, MatTableDataSource } from '../../../node_modules/@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 
 

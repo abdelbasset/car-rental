@@ -57,7 +57,7 @@ export class CarServices {
     }
 
     updateCar(id: any, car: Car): Observable<Car> {
-        return this.http.put<Car>(localUrl + id, car, httpOptions)
+        return this.http.put<Car>(localUrl + '/cars/' + id, car, httpOptions)
             .pipe(
                 catchError(this.handleError('updateCar', car))
             );
